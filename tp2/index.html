@@ -4,84 +4,106 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP2</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" 
-    integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw=="
-     crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Tp2</title>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <script src="script.js" defer></script>
 </head>
-
-<body class="barre">
-    <div class="barre-icon">
-        <div class="menu-profil">
-            <img src="img/avatar-login.jpg" alt="">
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="img/avatar-login.jpg" alt="#">
+                </span>
+                <div class="text header-text">
+                    <span class="name">Admin LTE3 </span>
+                    <!-- <span class="profesion">Web Developer</span> -->
+                </div>
+            </div>
+            <div class="image-text">
+                <span class="image">
+                    <img src="img/elhadji.jpeg" alt="#">
+                </span>
+                <div class="text header-text">
+                    <span class="name">El hadji Ibrahima</span>
+                    <!-- <span class="profesion">Web Developer</span> -->
+                </div>
+            </div>
+            <i class='bx bx-menu toggle'></i>
+        </header>
+        <div class="menu-bar">
+            <div class="menu">
+                <li class="box-search">
+                    
+                     <i class='bx bx-search icons'></i>
+                     <input type="search" name="" id="" placeholder="seach..." style="width: 75%;">
+                    
+                </li> 
+                <ul class="menu-link">
+                    <!-- <li class="nav-link ">
+                        <a href="#">
+                            <i class='bx bx-home-alt-2 icons'></i>
+                            <span class="text">Dashbord</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bxs-widget icons'></i>
+                            <span class="text">Widgets</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-layout icons'></i>
+                            <span class="text">Layout Option</span> 
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-pie-chart-alt-2 icons'></i>
+                            <span class="text">Chars</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bxs-bell icons'></i>
+                            <span class="text">UI Elements</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bxs-edit icons'></i>
+                            <span class="text">Forms</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-table icons'></i>
+                            <span class="text">Table</span>
+                        </a>
+                    </li> -->
+                </ul>
+            </div>
+            <div class="content-bottom">
+                <li class="">
+                    <a href="#">
+                        <i class='bx bx-log-out icons'></i>
+                        <span class="text">Log-out</span>
+                    </a>
+                </li>
+                <li class="mode">
+                    <div class="moon-sun">
+                        <i class='bx bx-moon icons moon'></i>
+                        <i class='bx bx-sun icons sun'></i>
+                    </div>
+                    <span class="mode-text text">Mode</span>
+                    <div class="toggle-switch">
+                        <span class="switch text"></span>
+                    </div>
+                </li>
+            </div>
         </div>
-        <div class="menu-profil">
-            <img src="img/avatar-login.jpg" alt="">
-        </div>
-        <div class="menu-search">
-            <img src="" alt="#">
-        </div>
-        <div class="menu-dashbord">
-          <div class="dash-i">
-            <img src="" alt="#">
-          </div>
-        </div>
-        <div class="layout">
-            <img src="" alt="#">
-        </div>
-        <div class="char-i">
-            <img src="" alt="#">
-           </div>
-
-
-    </div>
-    <div class="infos">
-        <div class="menu-profil">
-            <small>AdminLTE 3</small>
-        </div>
-        <div class="menu-profil"> 
-             <small>Alexander Pierre</small>
-        </div>
-        <div class="menu-search">
-            <input type="search" name="search" class="search" placeholder="search" >
-            <!-- <img src="" alt="#"> -->
-        </div>
-        <div class="menu-dashbord">
-           <div class="dash-i">
-               <img src="" alt="#">
-            <span>Dashbord</span>
-            <i class="fa fa-ico"></i>
-           </div>
-           <div class="dash-cache">
-               <i></i>
-               <span>widgets</span>
-               <img src="" alt="#">
-           </div>
-
-        </div>
-        <div class="layout">Layout options</div>
-        <div class="char">
-            <div class="char-i">
-                <span>Chars</span>
-                <i class="fa fa-ico"></i>
-               </div>
-               <div class="char-cache">
-                  <ul>
-                      <li>qwerty</li>
-                      <li>qwerty</li>
-                      <li>qwerty</li>
-                      <li>qwerty</li>
-                  </ul>
-               </div>
-        </div>
-    </div>
-    <div class="menu-burger">
-        <div class="burger">
-            <i class="fa-solid fa-bars fa-3x"></i>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+    </nav>
 </body>
 </html>

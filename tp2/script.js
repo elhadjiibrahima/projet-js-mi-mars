@@ -1,22 +1,36 @@
-const menu=document.querySelector(".burger");
-const barreInfo=document.querySelector(".infos");
-const c=document.querySelector(".dash-i");
-const d=document.querySelector(".dash-cache");
-const a=document.querySelector(".char-i");
-const b=document.querySelector(".char-cache");
+const body=document.querySelector("body");
+const sidebar=body.querySelector(".sidebar");
+const toggle=body.querySelector(".toggle");
+const searchbnt=body.querySelector(".box-search");
+const modeSwitch=body.querySelector(".toggle-switch");
+const  modeText=body.querySelector(".mode-text");
 
-
-menu.addEventListener("click",()=>{
-    barreInfo.classList.toggle("barre-info")
+   toggle.addEventListener("click",()=>{
+       sidebar.classList.toggle("close")
+   })
+   modeSwitch.addEventListener("click",()=>{
+    body.classList.toggle("dark")
 })
+function createli(classicon,text){
+   const li=document.createElement("li");
+   const lien=document.createElement("a");
+   const icon=document.createElement("i");
+   const span=document.createElement("span");
+   const ul=document.querySelector(".menu-link")
+   ul.appendChild(li);
+   li.appendChild(lien);
+   lien.appendChild(icon);
+   lien.appendChild(span);
+   li.setAttribute("class","nav-link");
+   icon.setAttribute("class",classicon);
+   span.setAttribute("class","text");
+   span.innerText=text;
+}
+createli("bx bx-home-alt-2 icons",`Dashbord`);
 
-c.addEventListener("click",()=>{
-    barreInfo.classList.add("barre-info")
-    d.classList.toggle("dash-cacher")
-
-
-})
-
-a.addEventListener("click",()=>{
-    b.classList.toggle("char-cacher")
- })
+const tab=[
+    {
+        menu:createli(classicon,text),
+           
+    }
+]
