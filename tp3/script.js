@@ -1,13 +1,13 @@
 const imge=document.getElementById("image")
-var images = ['img/img1.jpg','img/img2.jpg','img/img3.jpg','img/img4.jpeg','img/img5.jpg'];
+var images = ['img/img1.jpeg','img/img2.jpeg','img/img3.jpeg','img/img4.jpeg','img/img5.jpeg'];
 const body=document.querySelector("body")
 var i =0;
 
 function slideShow() {
     
     imge.src=images[i];
-    document.getElementById("imag").src=images[i];
-    if(i<images.length-1){
+    document.getElementById("imag").src=images[i+1];
+    if(i<images.length-2){
 
         i++;
 
@@ -19,11 +19,15 @@ function slideShow() {
 
     }
 
-    setTimeout("slideShow()" , 3000);
+    setTimeout("slideShow()" , 5000);
 
 }
 
 window.onload = slideShow;
+
+
+
+
 imge.addEventListener("mouseover",()=>{
     imge.classList.toggle("zoom")
 })

@@ -37,7 +37,7 @@
      width: 95px;
  }
  .sidebar.close .text{
-     opacity: 0;
+     display: none;
  }
  .sidebar .text{
      font-size: 1.5em;
@@ -45,8 +45,33 @@
      color: var(--text-color);
      transition: var(--tran-03);
      white-space: nowrap;
-     opacity: 1;
+     
  }
+ .new{
+     border: solid red;
+     color: white;
+     background-color: red;
+     font-weight: bolder;
+     font-size: 20px;
+     margin-left: 30px;
+ }
+ .sidebar.close .new{
+     display: none;
+ }
+ .supprime{
+     display: none;
+ }
+ .number{
+    border: solid rgb(0, 225, 255);
+    color: white;
+    background-color: rgb(0, 225, 255);
+    font-weight: bolder;
+    font-size: 20px;
+    margin-left: 5px;
+}
+.sidebar.close .number{
+    display: none;
+}
  .sidebar .image{
      min-width: 70px;
      display: flex;

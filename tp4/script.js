@@ -13,7 +13,7 @@ const uneMinuteEnMillisecondes=1000*60;
 const uneSecondeEnMillisecondes=1000;
 
 
-const newYear= new Date('2023')
+const newYear= new Date('April,3,2022')
 
 
 getComteur();
