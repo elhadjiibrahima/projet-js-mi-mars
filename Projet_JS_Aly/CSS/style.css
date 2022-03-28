@@ -1,0 +1,159 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color:#e1edf56c;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+header{
+    flex: 1;
+    margin: 0;
+    padding: 30px;
+    font-size: 30px;
+    font-weight: bolder;
+    background-color:#ecf0f1;
+}
+#add{
+    font-size: 1em;
+    padding: 10px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 10px;
+    box-shadow: 5px 5px #597b926c;
+    cursor: pointer;
+}
+#remove{
+    font-size: 1em;
+    padding: 10px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 10px;
+    box-shadow: 5px 5px #597b926c;
+    cursor: pointer;
+}
+.container{
+    flex: 8;
+    display: flex;
+}
+.colonne{
+    border: solid;
+    display: flex;
+    flex-direction: column;
+    background: url(../img/template.png) no-repeat center;
+    background-size: 100%;
+    width: 19%;
+    height: 90%;
+    margin:30px ;
+}
+.nameColonne{
+    font-size: 2em;
+    flex: 1;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    background-color:#fff;
+}
+.nameColonne input{
+    width: 100%;
+    height: 100%;
+    font-size: 1.5em;
+    border: none;
+    
+}
+.nameColonne i{
+    font-size: 2rem;
+    cursor: pointer;
+}
+.conte{
+    flex: 9;
+}
+.modal{
+    visibility: hidden;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color:rgba(0, 0, 0, 0.4);
+}
+.modal .tache{
+    width: 25%;
+    height: 80vh;
+    background-color: #fff;
+}
+.titre{
+    padding: 20px;
+    background-color:#597b926c;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.3em;
+}
+.titre i{
+    font-size: 3em;
+}
+.text_tache{
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tache_area{
+    display: flex;
+    flex-direction: column;
+    font-size: 2rem;
+    margin: 10px;
+}
+.date{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    font-size: 2rem;
+    margin: 10px;
+}
+.debut{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    font-size: 2rem;
+    margin: 10px;
+}
+.fin{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    font-size: 2rem;
+    margin: 10px;
+}
+.but{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 2rem;
+    margin: 10px;
+}
+.text_tache input{
+    width: 70%;
+    height: 50px;
+    margin: 15px;
+}
+.text_tache button{
+    width: 90%;
+    padding: 10px;
+    background-color: aqua;
+}

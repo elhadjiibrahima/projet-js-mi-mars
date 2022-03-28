@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <script src="JS/script.js" defer></script>
+</head>
+<body>
+    <header>
+        <button id="add">Colonne</button>
+        <button id="remove">Note</button>
+    </header>
+    <div class="container"></div>
+    <div class="modal">
+        <div class="tache">
+            <div class="titre">
+                <h2>Nouvelle tache</h2>
+                <i class='bx bx-x' id="fermer"></i>   
+            </div>
+            <div class="text_tache">
+                <h3>Remplir les information de la nouvelle tache</h3>
+                <div class="tache_area">
+                    <label for="tache">Tache</label>
+                    <textarea name="tache" id="area" cols="30" rows="15"></textarea>
+               </div>
+                <div class="date">
+                    <label for="date">Date</label>
+                <input type="date" name="date" id="date">
+                </div>
+                <div class="debut">
+                    <label for="debut">Heure de debut</label>
+                <input type="time" name="debut" id="debut">
+                </div>
+                <div class="fin">
+                    <label for="fin">Heure de fin</label>
+                <input type="time" name="fin" id="fin" >
+                </div>
+                <div class="but">
+                    <button type="submit" id="ajouter" placeholder="">Ajouter</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
