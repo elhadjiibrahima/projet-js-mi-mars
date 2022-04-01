@@ -20,9 +20,59 @@ const task_date = document.querySelector('#date');
 const task_start= document.querySelector('#start-time');
 const task_end = document.querySelector('#end-time');
 
-
-
-
+// fonction creer colonne 
+function createCol() {
+    var col = document.createElement('div');
+    i = main.childElementCount;
+    col.className = "col";
+    col.id=i;
+    col.style.backgroundColor=tabColor[randomcolor()]
+    col.classList.add('color'+(i+1));
+    var col_title = document.createElement('div');
+    col_title.className="col-title";
+    var h2_title = document.createElement('h2');
+    h2_title.innerText = 'Colonne '+(i+1);
+    h2_title.addEventListener('dblclick',()=>{
+        h2_title.innerHTML='';
+        var input = document.createElement('input');
+        input.type = 'text';
+        var button = document.createElement('button');
+        button.innerText='OK';
+        col_title.appendChild(input);
+        col_title.appendChild(button);
+        button.addEventListener('click',()=>{
+            if (input.value!="") {
+                h2_title.innerHTML=input.value;
+                col_title.classList.add('has-new-title');
+                col_title.removeChild(input);
+                col_title.removeChild(button);
+            }
+        })
+        span_title.addEventListener('click',()=>{
+            col_title.removeChild(input);
+            col_title.removeChild(button);
+        })
+    })
+    var span_title = document.createElement('span');
+    span_title.innerText='X'
+    span_title.addEventListener('click',e=> {
+        if (e.target.parentNode.parentNode!=main.firstChild || main.childElementCount==1) {
+            if (confirm('Voulez-vous supprimer la colonne')) {
+                e.target.parentNode.parentNode.remove();
+            }
+        }
+        refresh();
+    });
+    col_title.appendChild(h2_title);
+    col_title.appendChild(span_title);
+    var task_contain = document.createElement('div');
+    task_contain.className = 'task-contain';
+    col.appendChild(col_title);
+    // task_contain.appendChild(creerCarte())
+    col.appendChild(task_contain);
+  
+    return col;
+}
 
 add_col.addEventListener('click',()=>{
     if (main.childElementCount<5) {
@@ -31,7 +81,7 @@ add_col.addEventListener('click',()=>{
 })
 main.appendChild(createCol())
 
-
+// afficher modal
 add_note.addEventListener('click',()=>{
     if (main.childNodes.length>=1) {    
         modal.classList.add('active-modal');
@@ -40,6 +90,87 @@ add_note.addEventListener('click',()=>{
         })
     }
 })
+
+function refresh() {
+    const listTitles = document.querySelectorAll('.col-title');
+    listTitles.forEach((col_title,i) => {
+        let h2_title = col_title.firstChild
+        if (!col_title.classList.contains('has-new-title')) {
+            col_title.firstChild.innerHTML = 'Colonne '+(i+1); 
+            col_title.parentElement.id=i+1;
+        }
+    }); 
+}
+// fonction creer tache 
+function creerCarte(){
+    const btnS=document.createElement("i")
+    const btnG=document.createElement("span")
+    const btnD=document.createElement("span")
+    const carte=document.createElement("div")
+    const teax=document.createElement("textarea")
+    const vInput=document.createElement("div")
+    const vDate=document.createElement("div")
+    const vDebut=document.createElement("div")
+    const vFin=document.createElement("div")
+    ///// attribut
+    vInput.setAttribute("class","vinput")
+    btnS.setAttribute("class","")
+      btnD.setAttribute("id","btnD")
+      btnG.setAttribute("id","btnG")
+     carte.setAttribute("class","carte")
+     teax.setAttribute("class","teax")
+     // contenu
+     btnD.innerHTML="<<"
+     btnG.innerHTML=">>"
+     vInput.appendChild(vDate)
+     vInput.appendChild(vDebut)
+     vInput.appendChild(vFin)
+     carte.appendChild(btnS)
+     carte.appendChild(vInput)
+    carte.appendChild(btnD)
+    carte.appendChild(teax)
+    carte.appendChild(btnG)
+    //buttt
+    teax.addEventListener("click",()=>{
+        carte.classList.add("v")
+    })
+    vInput.addEventListener("click",()=>{
+        carte.classList.remove("v")
+    })
+    teax.value=task_content.value
+    vDate.innerText=task_date.value
+    vDebut.innerText=task_start.value
+    vFin.innerText=task_end.value
+   
+    const tabca=[task_date.value,task_start.value,task_end.value]
+    let comtp=planing(tabca)
+    const terminer=setInterval(() => {
+        comtp-=1000
+        if(comtp<=0){
+            clearInterval(terminer)
+            carte.classList.add("terminer")
+            btnD.style.display="none"
+            btnG.style.display="none"
+        }
+        console.log(comtp);
+    }, 1000);
+    
+    btnG.addEventListener("click",(e)=>{
+        var column=e.target.parentElement.parentElement.parentElement;
+        var n=parseInt(column.id);
+        var next_column=document.getElementById(n+1)
+        next_column.lastChild.appendChild(e.target.parentElement);
+    })
+    btnD.addEventListener("click",(e)=>{
+        var column=e.target.parentElement.parentElement.parentElement;
+        var n=parseInt(column.id);
+        var next_column=document.getElementById(n-1)
+        next_column.lastChild.appendChild(e.target.parentElement);
+    })
+    
+
+        return carte
+}
 
 
 show_header.addEventListener('click',()=>{
@@ -51,7 +182,7 @@ if (header.classList.contains('visible-header')) {
 }
 })
 
-
+// fonction validation
 function validite(){
     var cptError=0
     var now = new Date();
@@ -117,60 +248,6 @@ span.addEventListener('click',()=>{
 })
 })
 
-
-
-function createCol() {
-    var col = document.createElement('div');
-    i = main.childElementCount;
-    col.className = "col";
-    col.id=i;
-    col.style.backgroundColor=tabColor[randomcolor()]
-    col.classList.add('color'+(i+1));
-    var col_title = document.createElement('div');
-    col_title.className="col-title";
-    var h2_title = document.createElement('h2');
-    h2_title.innerText = 'Colonne '+(i+1);
-    h2_title.addEventListener('dblclick',()=>{
-        h2_title.innerHTML='';
-        var input = document.createElement('input');
-        input.type = 'text';
-        var button = document.createElement('button');
-        button.innerText='OK';
-        col_title.appendChild(input);
-        col_title.appendChild(button);
-        button.addEventListener('click',()=>{
-            if (input.value!="") {
-                h2_title.innerHTML=input.value;
-                col_title.classList.add('has-new-title');
-                col_title.removeChild(input);
-                col_title.removeChild(button);
-            }
-        })
-        span_title.addEventListener('click',()=>{
-            col_title.removeChild(input);
-            col_title.removeChild(button);
-        })
-    })
-    var span_title = document.createElement('span');
-    span_title.innerText='X'
-    span_title.addEventListener('click',e=> {
-        if (e.target.parentNode.parentNode!=main.firstChild || main.childElementCount==1) {
-            if (confirm('Voulez-vous supprimer la colonne')) {
-                e.target.parentNode.parentNode.remove();
-            }
-        }
-        refresh();
-    });
-    col_title.appendChild(h2_title);
-    col_title.appendChild(span_title);
-    var task_contain = document.createElement('div');
-    task_contain.className = 'task-contain';
-    col.appendChild(col_title);
-    // task_contain.appendChild(creerCarte())
-    col.appendChild(task_contain);
-  
-    return col;
-}
 add_tasks.addEventListener("click",()=>{
     if(validite()){
      const first_Col=document.querySelector(".col")
@@ -179,86 +256,6 @@ add_tasks.addEventListener("click",()=>{
 })
 
 
-function refresh() {
-    const listTitles = document.querySelectorAll('.col-title');
-    listTitles.forEach((col_title,i) => {
-        let h2_title = col_title.firstChild
-        if (!col_title.classList.contains('has-new-title')) {
-            col_title.firstChild.innerHTML = 'Colonne '+(i+1); 
-            col_title.parentElement.id=i+1;
-        }
-    }); 
-}
-
-function creerCarte(){
-    const btnS=document.createElement("i")
-    const btnG=document.createElement("span")
-    const btnD=document.createElement("span")
-    const carte=document.createElement("div")
-    const teax=document.createElement("textarea")
-    const vInput=document.createElement("div")
-    const vDate=document.createElement("div")
-    const vDebut=document.createElement("div")
-    const vFin=document.createElement("div")
-    vInput.setAttribute("class","vinput")
-    /////csdvs
-    btnS.setAttribute("class","")
-      btnD.setAttribute("id","btnD")
-      btnG.setAttribute("id","btnG")
-     carte.setAttribute("class","carte")
-     teax.setAttribute("class","teax")
-     //cewfe
-     btnD.innerHTML="<<"
-     btnG.innerHTML=">>"
-     vInput.appendChild(vDate)
-     vInput.appendChild(vDebut)
-     vInput.appendChild(vFin)
-    //  carte.appendChild(btnS)
-     carte.appendChild(vInput)
-    carte.appendChild(btnD)
-    carte.appendChild(teax)
-    carte.appendChild(btnG)
-    //buttt
-    teax.addEventListener("click",()=>{
-        carte.classList.add("v")
-    })
-    vInput.addEventListener("click",()=>{
-        carte.classList.remove("v")
-    })
-    teax.value=task_content.value
-    vDate.innerText=task_date.value
-    vDebut.innerText=task_start.value
-    vFin.innerText=task_end.value
-   
-    const tabca=[task_date.value,task_start.value,task_end.value]
-    let comtp=planing(tabca)
-    const terminer=setInterval(() => {
-        comtp-=1000
-        if(comtp<=0){
-            clearInterval(terminer)
-            carte.classList.add("terminer")
-            btnD.style.display="none"
-            btnG.style.display="none"
-        }
-        console.log(comtp);
-    }, 1000);
-    
-    btnG.addEventListener("click",(e)=>{
-        var column=e.target.parentElement.parentElement.parentElement;
-        var n=parseInt(column.id);
-        var next_column=document.getElementById(n+1)
-        next_column.lastChild.appendChild(e.target.parentElement);
-    })
-    btnD.addEventListener("click",(e)=>{
-        var column=e.target.parentElement.parentElement.parentElement;
-        var n=parseInt(column.id);
-        var next_column=document.getElementById(n-1)
-        next_column.lastChild.appendChild(e.target.parentElement);
-    })
-    
-
-        return carte
-}
 
 function planing(tab){
    const annee=tab[0].slice(0,4)
@@ -277,37 +274,6 @@ function planing(tab){
   
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function randomcolor(){
     const len=tabColor.length
     var pos=Math.floor(Math.random()*len)
@@ -319,8 +285,6 @@ function randomcolor(){
     }
     return pos
 }
-
-
 
 const backg=document.querySelector("#backg")
 const imBackg=document.querySelector(".backg")    
