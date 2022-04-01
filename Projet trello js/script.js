@@ -17,6 +17,7 @@ const start= document.querySelector('.start');
 const end = document.querySelector('.end');
 const task_content = document.querySelector('#content');
 const task_date = document.querySelector('#date');
+const task_date_end=document.querySelector("#date_end")
 const task_start= document.querySelector('#start-time');
 const task_end = document.querySelector('#end-time');
 
@@ -142,8 +143,12 @@ function creerCarte(){
     vDebut.innerText=task_start.value
     vFin.innerText=task_end.value
    
-    const tabca=[task_date.value,task_start.value,task_end.value]
+    const tabca=[task_date.value,task_start.value,task_end.value,task_date_end.value]
+    // var new_date = task_date.valueAsNumber+now.getHours()*3600000+now.getMinutes()*60000+now.getSeconds()*1000+now.getMilliseconds();
+    // if(task_date.value==now){
+
     let comtp=planing(tabca)
+    
     const terminer=setInterval(() => {
         comtp-=1000
         if(comtp<=0){
@@ -154,6 +159,8 @@ function creerCarte(){
         }
         console.log(comtp);
     }, 1000);
+// }
+//
     
     btnG.addEventListener("click",(e)=>{
         var column=e.target.parentElement.parentElement.parentElement;
@@ -173,6 +180,7 @@ function creerCarte(){
 }
 
 
+
 show_header.addEventListener('click',()=>{
 header.classList.toggle('visible-header');
 if (header.classList.contains('visible-header')) {
@@ -181,7 +189,7 @@ if (header.classList.contains('visible-header')) {
     show_header.innerHTML='Afficher menu';
 }
 })
-
+const date_end=document.querySelector(".date_end")
 // fonction validation
 function validite(){
     var cptError=0
@@ -190,17 +198,25 @@ function validite(){
         showError(content,task_content,"Veuillez remplir le champ");
         cptError++;
     }
-    if (task_date.value=="") {
+    if (task_date.value==""|| task_date_end.value=="") {
         showError(date,task_date,"Veuillez remplir le champ");
+        showError(date_end,task_date_end,"Veuillez remplir le champ");
         cptError++;
     }else{
-        var new_date = task_date.valueAsNumber+now.getHours()*3600000+now.getMinutes()*60000+now.getSeconds()*1000+now.getMilliseconds(); 
+        var new_date1 = task_date.valueAsNumber+now.getHours()*3600000+now.getMinutes()*60000+now.getSeconds()*1000+now.getMilliseconds();
+        var new_date2 = task_date_end.valueAsNumber+now.getHours()*3600000+now.getMinutes()*60000+now.getSeconds()*1000+now.getMilliseconds(); 
+
         console.log(task_date.valueAsDate);
+        console.log(task_date_end.valueAsDate)
         console.log(now);
         console.log(now.getTime());
-        if (new_date<now) {
+        if (new_date1<now) {
             showError(date,task_date,"Veuilez saisir une date ultérieure ou égale à celle actuelle");
          cptError++;
+        }
+        if(new_date2<new_date1){
+            showError(date_end,task_date_end,"Veuilez saisir une date ultérieure ou égale à celle de debut");
+            cptError++;
         }
     } 
 
@@ -214,12 +230,14 @@ function validite(){
             cptError++
         }
         if (task_end.value!="" && task_start.value!="") {
+           if(task_date.value==task_date_end.value){
             if (task_start.value>task_end.value) {
             
-            showError(start,task_start,"Veuillez prendre une heure de début antérieure à celle de fin");
-            showError(end,task_end,"Veuillez prendre une heure de fin ultérieure à celle de début");
-         cptError++;
-        } 
+                showError(start,task_start,"Veuillez prendre une heure de début antérieure à celle de fin");
+                showError(end,task_end,"Veuillez prendre une heure de fin ultérieure à celle de début");
+             cptError++;
+            } 
+           }
     }
     
 }
@@ -227,6 +245,7 @@ if (task_end.value=="") {
     showError(end,task_end,"Veuillez remplir le champ");
     cptError++
 }
+
   return cptError===0
 }
     
@@ -252,7 +271,10 @@ add_tasks.addEventListener("click",()=>{
     if(validite()){
      const first_Col=document.querySelector(".col")
      first_Col.lastElementChild.appendChild(creerCarte())
+     modal.classList.remove("active-modal")
+     clean()
     }
+
 })
 
 
@@ -265,8 +287,11 @@ function planing(tab){
    const mind=tab[1].slice(3)
    const heuref=tab[2].slice(0,2)
    const minf=tab[2].slice(3)
+   const anneef=tab[3].slice(0,4)
+   const moisf=tab[3].slice(5,7)
+   const jourf=tab[3].slice(8)
  
-  const date_fin=new Date(annee,mois-1,jour,heuref,minf).getTime()
+  const date_fin=new Date(anneef,moisf-1,jourf,heuref,minf).getTime()
   const date_debut=new Date(annee,mois-1,jour,heured,mind).getTime()
   const delai=date_fin-date_debut
 
@@ -311,5 +336,11 @@ function slideShow() {
 
 window.onload = slideShow;
 
+// const task_settings = document.querySelectorAll('.task-setting');
 
 
+function clean(){
+      task_settings.forEach(element => {
+          element.value="";
+      });
+}

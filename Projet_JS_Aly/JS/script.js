@@ -8,7 +8,7 @@ const hearder=document.querySelector("header")
 const addHeader=document.querySelector("#headd")
 const corbeille=document.querySelector(".corbeille")
 const btnAdd=document.querySelector("#ajouter")
-///qwqweq
+///
 const tarea=document.getElementById("area")
 const date=document.getElementById("date")
 const debut=document.getElementById("debut")
@@ -158,5 +158,6 @@ function randomcolor(){
     return true
 }
 
+function clean(){
 
-        
+}
