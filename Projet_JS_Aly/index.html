@@ -11,15 +11,26 @@
 </head>
 <body>
     <header>
+        <div class="btn">
         <button id="add">Colonne</button>
         <button id="remove">Note</button>
+       </div>
+       <div class="headd">
+        <i class='bx bx-add-to-queue' id="headd">.</i>
+       </div>
+       <div class="btn-modif">
+           <i class='bx bx-trash corbeille'></i>
+       </div>
     </header>
+    <div class="corbeil">
+
+    </div>
     <div class="container"></div>
     <div class="modal">
         <div class="tache">
             <div class="titre">
                 <h2>Nouvelle tache</h2>
-                <i class='bx bx-x' id="fermer"></i>   
+                <i class='bx bx-x' id="fermer">.</i>   
             </div>
             <div class="text_tache">
                 <h3>Remplir les information de la nouvelle tache</h3>
@@ -28,12 +39,16 @@
                     <textarea name="tache" id="area" cols="30" rows="15"></textarea>
                </div>
                 <div class="date">
-                    <label for="date">Date</label>
+                    <label for="date">Date de debut</label>
                 <input type="date" name="date" id="date">
                 </div>
                 <div class="debut">
                     <label for="debut">Heure de debut</label>
                 <input type="time" name="debut" id="debut">
+                </div>
+                <div class="date_fin">
+                    <label for="date_fin">Date de fin</label>
+                <input type="date" name="date_fin" id="date_fin" >
                 </div>
                 <div class="fin">
                     <label for="fin">Heure de fin</label>

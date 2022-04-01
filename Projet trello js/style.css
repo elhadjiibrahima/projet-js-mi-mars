@@ -1,0 +1,425 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+}
+
+
+body{
+    font-family: 'Playfair Display', serif;
+    /* background-color: antiquewhite; */
+    background-size: 30%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 99vw;
+    overflow: hidden;
+}
+#backg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: red;
+    z-index: -100;
+}
+#backg img{
+    width: 100%;
+    height: 100%;
+}
+header{
+    padding: 10px;
+    color: beige;
+    flex: 1;
+    display: flex;
+    position: relative;
+    transform: translateY(-100%);
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
+    transition: transform 2s ease;
+}
+.visible-header{
+    transform: translateY(0);
+    transition: transform 2s ease;
+}
+.add{
+    border: none;
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+
+}
+.add .add-colonne{
+    cursor: pointer;
+    margin-top: 10px;
+    flex: 1;
+    border-left: 5px solid;
+    border-radius: 6px;
+    background-color: rgba(0,160,150,0.5);
+}
+.add .add-note{
+    cursor: pointer;
+    margin-top: 20px;
+    flex: 1;
+    border-left: 5px solid;
+    background-color: rgba(0,160,150,0.5);
+    border-radius: 6px;
+}
+.buttons-edit{
+    flex: 2;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+}
+.buttons-edit i{
+    cursor: pointer;
+}
+.buttons-edit button{
+    background-color: rgba(0,160,150,0.5);
+    cursor: pointer;
+    height: fit-content;
+    width: fit-content;
+    font-size: 1.5rem;
+    color: #fff;
+}
+.buttons-edit button:hover{
+    background-color:rgba(137, 247, 11, 0.589);
+    color: rgb(90, 88, 88);
+}
+.buttons-edit input{
+    height: 2vh;
+}
+.buttons-edit label{
+    background-color: rgba(0,160,150,0.5);
+    color: white;
+    cursor: pointer;
+}
+header span{
+    margin-left: 5px;
+}
+header img{
+    width: 10%;
+    height: 100%;
+}
+.add div:hover{
+    background-color:rgb(241, 209, 203);
+    color: rgb(90, 88, 88);
+}
+main{
+    flex: 9;
+    /* border: solid 1px; */
+    display: flex;
+    align-items: center;
+}
+.col{
+    background: url(img/template.png) no-repeat center;
+    width: 18vw;
+    margin-left: 2vw;
+    position: relative;
+    height: 95%;
+    overflow-y: scroll;
+    display: flex;
+    border-radius: 2px;
+    flex-direction: column;
+    
+}
+.col-title{
+    position: relative;
+    background-color:rgba(0,0,0,0.3);
+    color: white;
+    flex: 1;
+    border-bottom: solid 1px;
+    text-align: center;
+}
+.col-title h2{
+    cursor: pointer;
+    width: 80%;
+    height: 80%;
+}
+.col-title input{
+    width: 70%;
+    height: 70%;
+    border-radius: 10px;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+}
+.col-title button{
+    position: absolute;
+    cursor: pointer;
+    width: 10%;
+    height: 70%;
+    border-radius: 10px;
+    right: 10%;
+    top: 10%;
+}
+.task-contain{
+    flex: 10;
+}
+.col-title span{
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.task-contain img{
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+.color{
+    background-color: brown;
+}
+.modal{
+    position: absolute;
+    display: none;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.modal::before{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: "";
+    background-color: rgba(0,0,0,0.7);
+}
+.form-contain{
+    border: solid 1px white;
+    position: absolute;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 75%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.header-form{
+    flex: 1;
+    display: flex;
+    position: relative;
+    align-items: center;
+    background-color: rgba(165, 42, 42, 0.815);
+}
+.header-form h2{
+    color: white;
+}
+.header-form span{
+    font-size: 1.5rem;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+}
+
+.task-settings{
+    flex: 9;
+    display: flex;
+    margin-top: 10px;
+    flex-direction: column;
+    
+}
+.task-settings label{
+    margin-top: 15px;
+}
+.task-settings textarea{
+    max-width: 90%;
+    min-width: 90%;
+    margin-left: 10px;
+    border: solid 1px;
+    min-height: 15vh;
+    max-height: 15vh;
+}
+.task-settings form{
+    margin-top: 30px;
+}
+.task-setting{
+    border-radius: 8px;
+    border: 1px solid;
+    margin-left: 10px;
+    margin-top: 5px;
+    width: 80%;
+    height: 5vh;
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+}
+.date{
+    display: flex;
+    flex-direction: column;
+}
+.start{
+    display: flex;
+    flex-direction: column;
+}
+.end{
+    display: flex;
+    flex-direction: column;
+}
+form label{
+    margin-left: 10px;
+}
+.active-modal{
+    display: block;
+    animation-duration: 1s;
+    animation-name: modal-animation;
+}
+.add-tasks{
+    border: 1px solid;
+    cursor: pointer;
+    border-radius: 5px;
+    height: 2vh;
+    width: fit-content;
+    background-color: green;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+form span{
+    margin-left: 10px;
+    color: red;
+    font-style: italic;
+}
+.deleted-tasks{
+    overflow-y: scroll;
+    background-color: aliceblue;
+    position: absolute;
+    right: 0;
+    transform: translateX(105%);
+    transition: transform 1s ease;
+}
+
+
+.actived-deleted-tasks{
+    transform: translateX(2%);
+    transition: transform 1s ease;
+}
+.show-header{
+    position: absolute;
+    cursor: pointer;
+    height: 2vh;
+    top: 98%;
+    left: 50%;
+    width: 10%;
+    font-size: .8rem;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+}
+
+.col {
+    animation-duration: 1s;
+    animation-name: col-animation;
+  }  
+  
+  @keyframes col-animation {
+    from {      
+      width: 0%;
+      opacity: 0.1;
+    }
+  
+    to {
+      width: 18vw;
+      opacity: 1;
+    }
+  }
+  
+  @keyframes modal-animation{
+      from{
+          height: 0%;
+          width: 0%;
+          background-color: black;
+
+      }
+      to{
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0,0,0,0.7);
+      }
+  }
+  @keyframes header-animation {
+      from{
+          height: 0;
+      }
+      to{
+          height: 5vh;
+      }
+  }
+
+.carte{
+    position: relative;
+    height: 20%;
+    font-size: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.carte textarea{
+    width: 80%;
+    height: 100%;
+}
+.carte span{
+    font-size: 2em;
+    cursor: pointer;
+}
+.vinput{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translateY(100%);
+  padding: 10px;
+  transition: transform 1s ease;
+
+}
+
+.carte.v textarea{
+    visibility: hidden;
+    transition: visiblity 1s ease;
+}
+.carte.v .vinput{
+  transform: translateY(0);
+  /* transition: transform 2s ease; */
+}
+.vinput div{
+    background-color: #fff;
+    width: 100%;
+    height: 30%;
+    margin: 2px;
+}
+.carte.v .vinput{
+    transform: translateY(0);
+}
+
+.carte.terminer{
+    background-color: green;
+    opacity: 0.3;
+    z-index: 1;
+}
+.col:first-child .task-contain #btnD{
+    display: none;
+}
+.col:last-child .task-contain #btnG{
+    display: none;
+}

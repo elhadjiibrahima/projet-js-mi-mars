@@ -1,5 +1,5 @@
 const imge=document.getElementById("image")
-var images = ['img/img1.jpeg','img/img2.jpeg','img/img3.jpeg','img/img4.jpeg','img/img5.jpeg'];
+
 const body=document.querySelector("body")
 var i =0;
 
