@@ -115,7 +115,7 @@ function creerCarte(){
     const vFin=document.createElement("div")
     ///// attribut
     vInput.setAttribute("class","vinput")
-    btnS.setAttribute("class","")
+    btnS.setAttribute("class","fa-solid fa-rectangle-xmark iconClose")
       btnD.setAttribute("id","btnD")
       btnG.setAttribute("id","btnG")
      carte.setAttribute("class","carte")
@@ -144,23 +144,18 @@ function creerCarte(){
     vFin.innerText=task_end.value
    
     const tabca=[task_date.value,task_start.value,task_end.value,task_date_end.value]
-    // var new_date = task_date.valueAsNumber+now.getHours()*3600000+now.getMinutes()*60000+now.getSeconds()*1000+now.getMilliseconds();
-    // if(task_date.value==now){
-
-    let comtp=planing(tabca)
-    
     const terminer=setInterval(() => {
-        comtp-=1000
+        let comtp=planing(tabca)
+        
         if(comtp<=0){
             clearInterval(terminer)
             carte.classList.add("terminer")
             btnD.style.display="none"
             btnG.style.display="none"
+            btnS.style.display="none"
         }
         console.log(comtp);
     }, 1000);
-// }
-//
     
     btnG.addEventListener("click",(e)=>{
         var column=e.target.parentElement.parentElement.parentElement;
@@ -174,12 +169,16 @@ function creerCarte(){
         var next_column=document.getElementById(n-1)
         next_column.lastChild.appendChild(e.target.parentElement);
     })
-    
+    btnS.addEventListener("click",(e)=>{
+    //    carte.style.display="none"
+    // var column=e.target.parentElement.parentElement.parentElement;
+    // var n=parseInt(column.id);
+    // var next_column=document.getElementById(n)
+    carte.appendChild(e.target.parentElement);
 
+    })
         return carte
 }
-
-
 
 show_header.addEventListener('click',()=>{
 header.classList.toggle('visible-header');
@@ -250,8 +249,6 @@ if (task_end.value=="") {
 }
     
 
-
-
 function showError(div,field,message) {
 spanError = document.createElement('span');
 spanError.innerHTML=message;
@@ -293,10 +290,15 @@ function planing(tab){
  
   const date_fin=new Date(anneef,moisf-1,jourf,heuref,minf).getTime()
   const date_debut=new Date(annee,mois-1,jour,heured,mind).getTime()
-  const delai=date_fin-date_debut
+  const nowDate=Date.now();
+  console.log(nowDate);
+  console.log(date_debut);
+  let delai=date_fin-date_debut
+  while(nowDate-date_debut>0 ){
+      delai=delai-1000;
+  }
 
   return delai
-  
 }
 
 function randomcolor(){

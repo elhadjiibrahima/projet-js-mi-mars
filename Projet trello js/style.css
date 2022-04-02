@@ -261,7 +261,8 @@ form{
     display: flex;
     flex-direction: column;
 }
-.date{
+
+.date_end{
     display: flex;
     flex-direction: column;
 }
@@ -366,7 +367,9 @@ form span{
   }
 
 .carte{
+    margin-top: 7px;
     position: relative;
+    background-color:rgb(240, 250, 255);
     height: 20%;
     font-size: 1em;
     display: flex;
@@ -391,7 +394,13 @@ form span{
   transform: translateY(100%);
   padding: 10px;
   transition: transform 1s ease;
-
+}
+.iconClose{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.4em;
+    cursor: pointer;
 }
 
 .carte.v textarea{
